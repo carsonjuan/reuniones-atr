@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reuniones ATR</title>
+
+        <!-- FONT -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />
+
+        <!-- CSS FRAMEWORK -->
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/skeleton.min.css" />
+
+        <!-- ICONS -->
+        <link href="fonts/microns.css" rel="stylesheet" />
+
+        <!-- CUSTOM -->
+        <link rel="stylesheet" href="css/estilo.css" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+    </head>
+    <body>
+        <header class="container">
+            <h1 class="">Reuniones ATR</h1>
+        </header>
+        <main class="container">
+            <div class="row">
+                <section class="column" id="preReunion">
+                    <form id="formulario-agregar-integrante">
+                        <fieldset>
+                            <input
+                                type="text"
+                                class="md-eight columns"
+                                placeholder="Nombre"
+                                id="campoNombre"
+                                autofocus
+                            />
+                            <button class="button-primary md-four columns" type="submit">Agregar</button>
+                        </fieldset>
+                    </form>
+                    <div id="lista-integrantes"></div>
+                    <button class="button-success u-full-width iniciarOculto" id="iniciar">Iniciar <span class="mu mu-right"></span></button>
+                </section>
+            </div>
+            <div class="row">
+                <section class="column iniciarOculto" id="enReunion">
+                    <button class="u-full-width" id="restablecer">Restablecer</button>
+                    <div class="card card-orador u-center-block" id="orador">
+                        <h4>Habla</h4>
+                        <h1 class="u-text-center">Pedro</h1>
+                        <!-- <p id="timer" class="timer u-text-center">
+                            <span id="timer-min">03</span>:<span id="timer-sec">00</span>
+                        </p> -->
+                        <div class="u-text-right">
+                            <button class="button-success " id="siguiente">Siguiente <span class="mu mu-right"></span></button>
+                        </div>
+                    </div>
+                    <div class="card card-termino u-center-block iniciarOculto" id="termino">
+                        
+                        <h1 class="u-text-center">Termino</h1>
+                        
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer class="footer">
+            <section class="container">
+                <p>Hecho por Juan. Version Vainilla v0.1</p>
+            </section>
+        </footer>
+
+        <template id="template-integrante">
+            <div class="card card-integrante">
+                <h5 class="u-pull-right"><i class="eliminar mu mu-delete" role="button"></i></h5>
+                <h4>Juan</h4>
+            </div>
+        </template>
+
+        <script src="js/app.js"></script>
+    </body>
+</html>

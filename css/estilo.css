@@ -1,0 +1,62 @@
+.container {
+  max-width: 600px;
+}
+
+.card-orador {
+  background-color: #7cd9f8;
+  max-width: 400px;
+}
+
+.card-termino {
+  background-color: #2ecc71;
+  max-width: 400px;
+}
+
+.card-integrante {
+  min-height: auto;
+  background-color: #e3e3e3;
+}
+
+.card-integrante > h4, .card-integrante > h5{
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.card-integrante.card-integrante-hablando{
+  background-color: #7cd9f8;
+}
+
+.card-integrante.card-integrante-hablo{
+  background-color: #82e3aa;
+}
+
+.iniciarOculto {
+  display: none;
+}
+
+.timer {
+    font-weight: 600;
+    font-size: 5.0rem;
+    line-height: 2;
+    letter-spacing: 0rem;
+}
+
+@media (min-width: 400px) {
+    /* Larger than mobile */
+  }
+  
+  @media (min-width: 560px) {
+    /* Larger than phablet (also point when grid becomes active) */
+  }
+  
+  @media (min-width: 720px) {
+    /* Larger than tablet */
+  }
+  
+  @media (min-width: 960px) {
+    /* Larger than desktop */
+  }
+  
+  @media (min-width: 1200px) {
+    /* Larger than Desktop HD */
+  }
