@@ -24,6 +24,10 @@ footer {
   max-width: 400px;
 }
 
+.card-orador.tiempo-pasado {
+  background-color: #ee8377;
+}
+
 .card-termino {
   background-color: #2ecc71;
   max-width: 400px;

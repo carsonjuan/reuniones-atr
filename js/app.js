@@ -8,6 +8,8 @@ const cardTermino = document.getElementById('termino')
 const btnIniciar = document.getElementById('iniciar')
 const btnRestablecer = document.getElementById('restablecer')
 const btnSiguiente = document.getElementById('siguiente')
+const timer = document.getElementById('timer')
+
 const fragment = document.createDocumentFragment()
 
 let integrantes = []
@@ -20,11 +22,16 @@ let oradorIndex = null
 
 let termino = false
 
+let intervaloCuentaAtras
+let millisegundosQueFaltan
+let tiempoFinal
+
 document.addEventListener('DOMContentLoaded', () => {
     if(localStorage.getItem('integrantes')) {
         integrantes = JSON.parse(localStorage.getItem('integrantes'))
     }
     actualizarPantalla()
+    
 })
 
 listaIntegrantes.addEventListener('click', e => {
@@ -137,7 +144,31 @@ const iniciarReunion = () => {
     orador = integrantes[0]
     orador.estado = 'hablando'
 
+    iniciarCuantaAtras()
     actualizarPantalla()
+    
+}
+
+const iniciarCuantaAtras = () => {
+
+    let tiempoDeCuentaAtras = 180 * 1000 //30 segundos
+
+    const now = Date.now()
+    tiempoFinal = now + tiempoDeCuentaAtras
+
+    actualizarTimer(tiempoFinal)
+
+    intervaloCuentaAtras = setInterval(() => {
+        actualizarTimer(tiempoFinal)
+    }, 1000)
+
+    cardOrador.classList.remove('tiempo-pasado')
+}
+
+const pararCuantaAtras = () => {
+
+    clearInterval(intervaloCuentaAtras)
+
 }
 
 const restablecer = () => {
@@ -149,6 +180,8 @@ const restablecer = () => {
     integrantes.forEach(integrante => {
         integrante.estado = 'nohablo'
     })
+
+    pararCuantaAtras()
 
     actualizarPantalla()
 }
@@ -164,5 +197,28 @@ const siguiente = () => {
         orador = integrantes[oradorIndex]
         orador.estado = 'hablando'
     }
+    iniciarCuantaAtras()
     actualizarPantalla()
+}
+
+const actualizarTimer = (tiempoFinal) => {
+    millisegundosQueFaltan = tiempoFinal - Date.now()
+    const segundosQueFaltan = Math.round(millisegundosQueFaltan / 1000)
+
+    let min = Math.floor(segundosQueFaltan / 60)
+    let seg = segundosQueFaltan % 60
+
+    if (min < 10) {
+        min = `0${min}`
+    }
+    if (seg < 10) {
+        seg = `0${seg}`
+    }
+    if (segundosQueFaltan >= 0) {
+        timer.innerHTML = `${min}:${seg}`
+    } else {
+        timer.innerHTML = '00:00'
+        cardOrador.classList.add('tiempo-pasado')
+        pararCuantaAtras()
+    }
 }
